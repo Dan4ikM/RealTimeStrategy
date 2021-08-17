@@ -46,7 +46,7 @@ public class GameOverHandler : NetworkBehaviour
 
     #region Client
 
-    [Client]
+    [ClientRpc]
     private void RpcGameOver(string winner)
     {
         ClientOnGameOver?.Invoke(winner);
