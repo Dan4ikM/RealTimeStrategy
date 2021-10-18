@@ -34,11 +34,6 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private void Update()
     {
-        if (player == null)
-        {
-            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-        }
-
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             StartSelectionArea();
@@ -50,6 +45,14 @@ public class UnitSelectionHandler : MonoBehaviour
         else if (Mouse.current.leftButton.isPressed)
         {
             UpdateSelectionArea();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (player == null && NetworkClient.connection.identity != null)
+        {
+            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
         }
     }
 
