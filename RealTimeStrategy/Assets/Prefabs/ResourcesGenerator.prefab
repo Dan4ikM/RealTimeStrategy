@@ -176,6 +176,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5547035016936173668}
     m_Modifications:
+    - target: {fileID: 292308372983328051, guid: 342050d918e916847a802409d9cf4d64, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74ac4cf4a74ac6d4ab1e629b39133b64, type: 2}
     - target: {fileID: 1090664011378249380, guid: 342050d918e916847a802409d9cf4d64, type: 3}
       propertyPath: m_Name
       value: ResourcesGeneratorPreview
