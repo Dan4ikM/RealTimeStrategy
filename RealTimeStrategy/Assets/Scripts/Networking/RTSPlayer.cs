@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
@@ -7,8 +8,18 @@ public class RTSPlayer : NetworkBehaviour
 {
     [SerializeField] private Building[] buildings = new Building[0];
 
+    [SyncVar(hook = nameof(ClientHandleResourcesUpdate))]
+    private int resources = 500;//Resources resources = new Resources(500, 0, 0); Gold, metal, 
+
+    public event Action<int> ClientOnResourcesUpdate;
+
     private List<Unit> myUnits = new List<Unit>();
     private List<Building> myBuildings = new List<Building>();
+
+    public int GetResources()
+    {
+        return resources;
+    }
 
     public List<Unit> GetMyUnits()
     {
@@ -18,6 +29,11 @@ public class RTSPlayer : NetworkBehaviour
     public List<Building> GetMyBuildings()
     {
         return myBuildings;
+    }
+
+    public void SetResources(int newResources)
+    {
+        resources = newResources;
     }
 
     #region Server
@@ -130,5 +146,9 @@ public class RTSPlayer : NetworkBehaviour
         myBuildings.Remove(building);
     }
 
+    private void ClientHandleResourcesUpdate(int oldResources, int newResources)
+    {
+        ClientOnResourcesUpdate?.Invoke(newResources);
+    }
     #endregion
 }
