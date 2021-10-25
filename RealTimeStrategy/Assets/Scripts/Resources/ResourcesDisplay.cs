@@ -7,7 +7,7 @@ using System;
 
 public class ResourcesDisplay : MonoBehaviour
 {
-    [SerializeField] private TMP_Text resourcesText;
+    [SerializeField] private TMP_Text resourcesText = null;
 
     private RTSPlayer player;
 
