@@ -22,6 +22,8 @@ public class UnitSelectionHandler : MonoBehaviour
     {
         mainCamera = Camera.main;
 
+        player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+
         Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
         GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
     }
@@ -45,14 +47,6 @@ public class UnitSelectionHandler : MonoBehaviour
         else if (Mouse.current.leftButton.isPressed)
         {
             UpdateSelectionArea();
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (player == null && NetworkClient.connection.identity != null)
-        {
-            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
         }
     }
 

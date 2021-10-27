@@ -27,6 +27,8 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         iconImage.sprite = building.GetIcon();
         priceText.text = building.GetPrice().ToString();
 
+        player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+
         buildingCollider = building.GetComponent<BoxCollider>();
     }
 
@@ -35,14 +37,6 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (buildingPrieviewInstance == null) { return; }
 
         UpdateBuildingPreview();
-    }
-
-    private void LateUpdate()
-    {
-        if (player == null && NetworkClient.connection.identity != null)
-        {
-            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

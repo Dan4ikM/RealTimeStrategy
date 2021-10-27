@@ -3760,6 +3760,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobbuUI: {fileID: 1537943034}
   startGameButton: {fileID: 1738449062}
+  playerNameTexts:
+  - {fileID: 343701030}
+  - {fileID: 172795659}
+  - {fileID: 951478754}
+  - {fileID: 1385907710}
 --- !u!1 &1963313246
 GameObject:
   m_ObjectHideFlags: 0
